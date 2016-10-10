@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -18,7 +19,9 @@ public class Lista {
 
 	// Variaveis
 	@Id //Identificador
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //Faz o banco gerar o id automatico
+//	@GeneratedValue(strategy=GenerationType.IDENTITY) //Faz o banco gerar o id automatico
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ_LISTA")
+	@SequenceGenerator(name="SEQ_LISTA", sequenceName="SEQ_LISTA")
 	private Long id;
 	@Column(length=100) //Column define as informações da coluna como se fosse no banco de dados
 	private String titulo;

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties("lista")
@@ -13,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class ItemLista {
 	// Variaveis
 	@Id // Identificador
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Faz o banco gerar o id automatico
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) // Faz o banco gerar o id automatico
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ_ITEMLISTA")
+	@SequenceGenerator(name="SEQ_ITEMLISTA", sequenceName="SEQ_ITEMLISTA")
 	private Long id;
 	private String descricao;
 	private boolean feito;

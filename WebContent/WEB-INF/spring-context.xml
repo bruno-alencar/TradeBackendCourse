@@ -15,16 +15,16 @@
 	<context:component-scan base-package="br.senai.sp.informatica.todolist" />
 	<mvc:annotation-driven />
 
-	<bean id="mysqlDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/todolistdois" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
+	<bean id="oracleDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@172.27.2.8:1521:xe" />
+		<property name="username" value="SYSTEM" />
+		<property name="password" value="portoseguro" />
 	</bean>
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="dataSource" ref="oracleDataSource" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>

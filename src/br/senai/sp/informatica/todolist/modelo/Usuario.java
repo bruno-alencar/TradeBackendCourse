@@ -5,13 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 
 @Entity
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ_USUARIO")
+	@SequenceGenerator(name="SEQ_USUARIO", sequenceName="SEQ_USUARIO")
 	private Long id;
 	@Column(length=100,unique=true)
 	private String login;
